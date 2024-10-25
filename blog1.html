@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBD MIELL</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Playpen+Sans:wght@100..800&family=SUSE:wght@100..800&display=swap');
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: white;
+        }
+
+        .bg_heart {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            top: -50%;
+            transform: rotate(-45deg);
+        }
+
+        .heart:before, .heart:after {
+            position: absolute;
+            display: block;
+            content: "";
+            background: inherit;
+            border-radius: 100%;
+        }
+
+        .heart:before {
+            top: -50%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .heart:after {
+            top: 0;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes love {
+            0% { top: 110%; }
+            100% { top: -10%; }
+        }
+
+        .text-container-blog {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            z-index: 2;
+        }
+
+        .container {
+            margin-bottom: 5px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 1px 1px 20px gray;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .button {
+            margin-top: 20px;
+            display: flex; /* Menggunakan flexbox untuk menyusun tombol */
+            justify-content: center; /* Mengatur tombol agar berjarak dan sejajar */
+            width: 50%; /* Memastikan kontainer tombol menggunakan lebar penuh */
+            z-index: 3; /* Z-index lebih tinggi */
+        }
+
+        .button-1 {
+            background-color: #EA4C89;
+            border-radius: 8px;
+            border-style: none;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            height: 40px;
+            line-height: 20px;
+            outline: none;
+            padding: 10px 16px;
+            text-align: center;
+            transition: color 100ms;
+            flex: 1; /* Membuat tombol mengambil ruang yang sama */
+            margin: 0 10px; /* Margin antar tombol */
+        }
+
+        .button-1:hover,
+        .button-1:focus {
+            background-color: #F082AC;
+        }
+
+        .button-1 > a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .text-blog {
+            font-size: 15px;
+            font-family: "Kalam", cursive;
+            color: rgb(240, 98, 193);
+        }
+
+        a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        @media (max-width: 480px) {
+            .button {
+            margin-top: 20px;
+            display: flex; /* Menggunakan flexbox untuk menyusun tombol */
+            justify-content: center; /* Mengatur tombol agar berjarak dan sejajar */
+            width: 100%; /* Memastikan kontainer tombol menggunakan lebar penuh */
+            z-index: 3; /* Z-index lebih tinggi */
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg_heart"></div>
+    <div class="text-container-blog">
+        <div class="container">
+            <div class="text-blog" id="text"></div>
+        </div>
+        <div class="button" style="display: none;">
+            <button class="button-1"><a href="index.html">Back</a></button>
+            <button class="button-1"><a href="blog2.html">Next</a></button>
+        </div>
+    </div>
+    
+</body>
+<script>
+   const textElement = document.getElementById('text');
+   const text = 
+                `I just wanted to tell you how much I love you. <br>
+I don't let you know enough how much I appreciate you.<br>
+You mean everything to me. I'm sorry if I worry you or I make you upset sometimes. I never mean to do that.<br>
+You are my one and only and never want that to change.<br>
+You are an amazing girlfriend.<br>
+You make everything better. I love every single thing about you.<br>
+I love the way you smile, and I especially love when you get tired and you act all cute.<br>
+You have made everything about my life better, and I couldn't thank you enough.<br>
+I don't deserve someone like you, I don't know how I got so lucky.<br>
+I'm not gonna leave you, I want to be with you for a very long time.<br>
+I love you so much and I hope you always know that.`;
+
+   let index = 0;
+
+   function typeText() {
+       if (text[index] === '<') {
+           textElement.innerHTML += '<br>';
+           index += 4;
+       } else {
+           textElement.innerHTML += text[index];
+           index++;
+       }
+
+       if (index < text.length) {
+           setTimeout(typeText, 10);
+       } else {
+           textElement.style.borderRight = 'none';
+           document.querySelectorAll('.button').forEach(button => button.style.display = 'flex'); // Tampilkan tombol setelah teks selesai
+       }
+   }
+
+   typeText();
+
+   var love = setInterval(function() {
+       var r_num = Math.floor(Math.random() * 40) + 1;
+       var r_size = Math.floor(Math.random() * 65) + 10;
+       var r_left = Math.floor(Math.random() * 100) + 1;
+       var r_bg = Math.floor(Math.random() * 25) + 100;
+       var r_time = Math.floor(Math.random() * 5) + 5;
+
+       $('.bg_heart').append("<div class='heart' style='width:" + r_size + "px;height:" + r_size + "px;left:" + r_left + "%;background:rgba(255," + (r_bg - 25) + "," + r_bg + ",1);animation: love " + r_time + "s ease'></div>");
+
+       $('.bg_heart').append("<div class='heart' style='width:" + (r_size - 10) + "px;height:" + (r_size - 10) + "px;left:" + (r_left + r_num) + "%;background:rgba(255," + (r_bg - 25) + "," + (r_bg + 25) + ",1);animation: love " + (r_time + 5) + "s ease'></div>");
+
+       $('.heart').each(function() {
+           var top = $(this).css("top").replace(/[^-\d\.]/g, '');
+           var width = $(this).css("width").replace(/[^-\d\.]/g, '');
+           if (top <= -100 || width >= 150) {
+               $(this).detach();
+           }
+       });
+   }, 500);
+</script>
+</html>

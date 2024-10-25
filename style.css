@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Playpen+Sans:wght@100..800&family=SUSE:wght@100..800&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: white;
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Rata tengah untuk konten utama */
+    align-items: center;
+    position: relative; /* Tambahkan posisi relatif untuk parent */
+    flex-direction: column; /* Mengatur kolom untuk menumpuk elemen */
+}
+
+.text-container {
+    width: 450px; /* Pastikan lebar tetap untuk menampung teks */
+    position: relative; /* Posisi relatif untuk penempatan yang tepat */
+    z-index: 2; /* Pastikan teks berada di atas */
+    text-align: center; /* Rata tengah untuk teks dan tombol */
+}
+
+.text {
+    font-family: "Kalam", cursive;
+    color: rgb(240, 98, 193);
+    font-size: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    border-right: 2px solid rgb(240, 98, 193); /* Garis kursor */
+    animation: typing 4s steps(40, end), blinkCursor 0.7s step-end infinite;
+}
+
+.gambar {
+    background-color: rgb(234, 125, 203);
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 2; /* Pastikan gambar berada di atas */
+}
+
+.gambar > img {
+    border-radius: 8px;
+}
+
+.button-1 {
+    display: none; /* Sembunyikan tombol secara default */
+    background-color: #EA4C89;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    margin: 20px auto 20px; /* Mengatur margin untuk rata tengah */
+    outline: none;
+    padding: 10px 16px;
+    text-align: center;
+    transition: color 100ms;
+}
+
+.button-1:hover,
+.button-1:focus {
+    background-color: #F082AC;
+}
+
+.button-1 > a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blinkCursor {
+    50% { border-color: transparent; }
+}
+
+.bg_heart {
+    position: absolute; /* Posisi absolute agar tetap di belakang */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1; /* Pastikan latar belakang hati di belakang elemen lainnya */
+}
+
+.heart {
+    position: absolute;
+    top: -50%;
+    transform: rotate(-45deg);
+}
+
+.heart:before, .heart:after {
+    position: absolute;
+    display: block;
+    content: "";
+    background: inherit;
+    border-radius: 100%;
+}
+
+.heart:before {
+    top: -50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.heart:after {
+    top: 0;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes love {
+    0% { top: 110%; }
+    100% { top: -10%; }
+}
+
+.text-container-blog {
+    display: grid;
+    place-items: center; /* Kombinasi dari align-items dan justify-items */
+    height: 100vh; /* Pastikan kontainer memenuhi tinggi viewport */
+    position: relative;
+    z-index: 2;
+    background-color: white;
+}
+
+.text-blog {
+    font-size: 30px;
+    font-family: "Kalam", cursive;
+    color: rgb(240, 98, 193);
+}
+

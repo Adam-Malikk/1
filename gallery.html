@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="gallery.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Tambahkan jQuery di sini -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-family: 'Kalam', cursive;
+            color: rgb(240, 98, 193);
+            font-size: 3rem;
+            text-align: center;
+            margin: 20px 0;
+            z-index: 2;
+        }
+
+        h2 {
+            font-family: 'Kalam', cursive;
+            color: rgb(240, 98, 193);
+            font-size: 3rem;
+            text-align: center;
+            margin: 20px 0;
+            z-index: 2;
+        }
+
+        main {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            z-index: 2;
+        }
+
+        .gambar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .gambar img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            z-index: 2;
+            animation: pop-up 0.5s ease forwards; /* Tambahkan animasi pop-up */
+            opacity: 0; /* Mulai dengan transparansi */
+        }
+
+        .gambar img.visible {
+            opacity: 1; /* Menjadi terlihat setelah animasi */
+        }
+
+        .gambar img:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Definisikan animasi pop-up */
+        @keyframes pop-up {
+            0% {
+                transform: scale(0.5); /* Memperkecil gambar */
+                opacity: 0; /* Mulai dari transparan */
+            }
+            100% {
+                transform: scale(1); /* Kembali ke ukuran normal */
+                opacity: 1; /* Menjadi terlihat */
+            }
+        }
+
+        .footer-1 {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 15px;
+            background-color: pink;
+            box-shadow: 0px -10px 20px pink;
+            z-index: 2;
+        }
+
+        .footer-2 {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 15px;
+            background-color: pink;
+            box-shadow: 0px 10px 20px pink;
+            z-index: 2;
+        }
+
+        .bg_heart {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            top: -50%;
+            transform: rotate(-45deg);
+        }
+
+        .heart:before, .heart:after {
+            position: absolute;
+            display: block;
+            content: "";
+            background: inherit;
+            border-radius: 100%;
+        }
+
+        .heart:before {
+            top: -50%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .heart:after {
+            top: 0;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes love {
+            0% { top: 110%; }
+            100% { top: -10%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg_heart"></div>
+    <main>
+        <h1>Gallery</h1>
+        <div class="gambar">
+            <img src="miel/miel1.jpg" alt="Image 1">
+            <img src="miel/miel10.jpg" alt="Image 2">
+            <img src="miel/miel11.jpg" alt="Image 3">
+            <img src="miel/miel13.jpg" alt="Image 5">
+            <img src="miel/miel14.jpg" alt="Image 6">
+            <img src="miel/miel15.jpg" alt="Image 7">
+            <img src="miel/miel16.jpg" alt="Image 8">
+            <img src="miel/miel17.jpg" alt="Image 9">
+            <img src="miel/miel2.jpg" alt="Image 10">
+            <img src="miel/miel3.jpg" alt="Image 11">
+            <img src="miel/miel4.jpg" alt="Image 12">
+            <img src="miel/miel5.jpg" alt="Image 13">
+            <img src="miel/miel6.jpg" alt="Image 14">
+            <img src="miel/miel7.jpg" alt="Image 15">
+            <img src="miel/miel8.jpg" alt="Image 16">
+            <img src="miel/miel9.jpg" alt="Image 17">
+        </div>
+        <h2>I LOVE YOU</h2>
+    </main>
+
+    <footer class="footer-1"></footer>
+    <footer class="footer-2"></footer>
+
+    <script>
+        $(document).ready(function() {
+            // Menambahkan kelas 'visible' ke setiap gambar setelah di-load
+            $('.gambar img').each(function(index) {
+                $(this).delay(1000 * index).queue(function(next) { // Delay 1 detik (1000ms)
+                    $(this).addClass('visible'); // Tambahkan kelas 'visible' untuk memulai animasi
+                    next();
+                });
+            });
+
+            // Animasi hati
+            var love = setInterval(function() {
+                var r_num = Math.floor(Math.random() * 40) + 1;
+                var r_size = Math.floor(Math.random() * 65) + 10;
+                var r_left = Math.floor(Math.random() * 100) + 1;
+                var r_bg = Math.floor(Math.random() * 25) + 100;
+                var r_time = Math.floor(Math.random() * 5) + 5;
+
+                $('.bg_heart').append("<div class='heart' style='width:" + r_size + "px;height:" + r_size + "px;left:" + r_left + "%;background:rgba(255," + (r_bg - 25) + "," + r_bg + ",1);animation: love " + r_time + "s ease'></div>");
+
+                $('.bg_heart').append("<div class='heart' style='width:" + (r_size - 10) + "px;height:" + (r_size - 10) + "px;left:" + (r_left + r_num) + "%;background:rgba(255," + (r_bg - 25) + "," + (r_bg + 25) + ",1);animation: love " + (r_time + 5) + "s ease'></div>");
+
+                $('.heart').each(function() {
+                    var top = $(this).css("top").replace(/[^-\d\.]/g, '');
+                    var width = $(this).css("width").replace(/[^-\d\.]/g, '');
+                    if (top <= -100 || width >= 150) {
+                        $(this).detach();
+                    }
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html>

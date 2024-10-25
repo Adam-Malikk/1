@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    position: relative;
+    z-index: 2;
+}
+
+.text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.text-container h1 {
+    font-size: 5rem;
+    color: #333;
+}
+
+.earth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.earth-image {
+    width: 400px;
+    animation: rotateEarth 10s linear infinite;
+    background-image: none;
+}
+
+/* Animasi rotasi untuk gambar bumi */
+@keyframes rotateEarth {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Tombol navigasi */
+.buttons-container {
+    position: absolute;
+    bottom: 90px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 2;
+}
+
+.button-left, .button-right {
+    background-color: #EA4C89;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    z-index: 3;
+}
+
+.button-left:hover, .button-right:hover {
+    background-color: #F082AC;
+}
+
+.bg_heart {
+    position: absolute; /* Posisi absolute agar tetap di belakang */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1; /* Pastikan latar belakang hati di belakang elemen lainnya */
+}
+
+.heart {
+    position: absolute;
+    top: -50%;
+    transform: rotate(-45deg);
+}
+
+.heart:before, .heart:after {
+    position: absolute;
+    display: block;
+    content: "";
+    background: inherit;
+    border-radius: 100%;
+}
+
+.heart:before {
+    top: -50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.heart:after {
+    top: 0;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes love {
+    0% { top: 110%; }
+    100% { top: -10%; }
+}
+
+a{
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-1 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15px; /* Tinggi footer lebih kecil */
+    background-color: pink;
+    box-shadow: 0px -10px 20px pink; /* Bayangan lebih tinggi ke atas */
+    z-index: 2;
+}
+
+.footer-2 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 15px; /* Tinggi footer lebih kecil */
+    background-color: pink;
+    box-shadow: 0px 10px 20px pink; /* Bayangan lebih tinggi ke atas */
+    z-index: 2;
+}
+

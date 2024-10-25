@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBD MIELL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: white;
+            font-family: 'Kalam', cursive;
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            flex-direction: column;
+            padding: 20px; /* Tambahkan padding untuk ruang di tepi */
+        }
+
+        .text-container {
+            width: 90%; /* Ubah lebar menjadi 90% untuk responsivitas */
+            max-width: 600px; /* Tetap batasi lebar maksimum */
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .text {
+            color: rgb(240, 98, 193);
+            font-size: 6vw; /* Gunakan vw untuk ukuran font responsif */
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            border-right: 2px solid rgb(240, 98, 193);
+            animation: typing 4s steps(40, end), blinkCursor 0.7s step-end infinite;
+        }
+
+        .gambar {
+            background-color: rgb(234, 125, 203);
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 2;
+            margin: 20px 0; /* Tambahkan margin vertikal */
+        }
+
+        .gambar > img {
+            border-radius: 8px;
+            max-width: 100%; /* Gambar responsif */
+            height: auto; /* Jaga proporsi gambar */
+        }
+
+        .button-1 {
+            display: none;
+            background-color: #EA4C89;
+            border-radius: 8px;
+            border-style: none;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            font-size: 5vw; /* Ukuran tombol responsif */
+            margin: 20px auto;
+            outline: none;
+            padding: 10px 16px;
+            text-align: center;
+            transition: background-color 100ms;
+        }
+
+        .button-1:hover,
+        .button-1:focus {
+            background-color: #F082AC;
+        }
+
+        .button-1 > a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blinkCursor {
+            50% { border-color: transparent; }
+        }
+
+        /* Media queries untuk desktop */
+        @media (min-width: 768px) {
+            .text {
+                font-size: 4vw; /* Ukuran font lebih kecil di laptop */
+            }
+
+            .button-1 {
+                font-size: 2vw; /* Ukuran tombol lebih kecil di laptop */
+            }
+        }
+
+        /* Media queries untuk perangkat kecil */
+        @media (max-width: 480px) {
+            .text {
+                font-size: 8vw; /* Ukuran font lebih besar di perangkat kecil */
+            }
+
+            .button-1 {
+                font-size: 6vw; /* Ukuran tombol lebih besar di perangkat kecil */
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="text-container">
+            <div class="text" id="text"></div>
+            <button class="button-1" role="button"><a href="blog1.html">Next</a></button>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const textElement = document.getElementById('text');
+        const button = document.querySelector('.button-1');
+        const text = 'Happy Birthday Pemiel'; 
+        let index = 0;
+
+        function typeText() {
+            textElement.innerHTML += text[index];
+            index++;
+
+            if (index < text.length) {
+                setTimeout(typeText, 100);
+            } else {
+                textElement.style.borderRight = 'none';
+                button.style.display = 'block';
+            }
+        }
+
+        typeText(); // Memulai animasi pengetikan
+    </script>
+</body>
+</html>
